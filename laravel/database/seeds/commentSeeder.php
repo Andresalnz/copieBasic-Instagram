@@ -12,6 +12,7 @@ class commentSeeder extends Seeder
      */
     public function run()
     {
+        /*
         DB::table('comments')->insert([
             'user_id'=>'1',
             'image_id'=>'1',
@@ -29,7 +30,8 @@ class commentSeeder extends Seeder
             'image_id'=>'3',
             'content'=>'comentario3'
         ]);
-    
-        
+
+        */
     }
+
 }

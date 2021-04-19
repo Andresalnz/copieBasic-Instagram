@@ -22,8 +22,14 @@ Route::post('/user/config/', 'UserController@update')->name('User.update');
 Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('User.avatar');
 Route::get('/user/profile/{id}','UserController@getProfile')->name('User.profile');
 
-//subir imagen
+//image
 Route::get('/image/save','ImageController@create')->name('Image.create');
 Route::post('/image/save','ImageController@save')->name('Image.save');
 Route::get('/image/file/{filename}','ImageController@getImage')->name('Image.file');
 Route::get('/image/{id}','ImageController@detail')->name('Image.detail');
+Route::get('home/{id}','ImageController@viewComments')->name('Image.comments');
+
+
+//comments
+Route::post('/comment/save','CommentController@save')->name('Comment.save');
+Route::get('/comment/delete/{id}')->name('Comment.delete');

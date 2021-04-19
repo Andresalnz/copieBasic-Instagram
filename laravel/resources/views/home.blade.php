@@ -56,12 +56,33 @@
                                     </div>
 
                                     <div class="comments">
-                                        <a class="btn btn-sm btn-warning btn-comments" href="{{route('Image.detail',['id'=>$image->id])}}"> Comentarios ({{count($image->comments)}}</a>
+                                        <a class="btn btn-sm btn-warning btn-comments" href="{{route('Image.detail',['id'=>$image->id])}}">Comentarios({{count($image->comments)}}</a>
                                     </div>
+                                    <!--comments-->
+                                    @foreach($image->comments as $comment)
+                                    <div class="comment">
+                                        <span class="nickname">
+                                        {{ '@' . $image->user->nick }}
+                                        </span>
+                                        <span class="nickname date">
+                                            {{ ' | ' . \FormatTime::LongTimeFilter($comment->created_at) }}
+                                        </span>
+                                        <p>{{ $comment->content }}</p>
+                                        @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                            <a href="#" class="btn btn-sm btn-danger">
+                                                Eliminar
+                                            </a>
+                                        @endif
+                                        <hr/>
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
-
                     @endforeach
+
+
+
+
 
                         <div class="clearfix"></div> {{$images->links()}} </div>
 

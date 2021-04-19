@@ -59,6 +59,13 @@ class ImageController extends Controller
 
     }
 
+    public function detail($id){
+        $image = Image::find($id);
+        return view ('detail',['image'=>$image]);
+    }
+    public function viewComments(){
+        return redirect()->route('home'); //Switch to the user's profile.
+    }
 
 
     /**
