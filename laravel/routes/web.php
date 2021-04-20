@@ -16,7 +16,7 @@
 Auth::routes();
 Route::get ('/','HomeController@index')->name('home');
 
-
+//user
 Route::get('/user/config/', 'UserController@config')->name('User.config');
 Route::post('/user/config/', 'UserController@update')->name('User.update');
 Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('User.avatar');

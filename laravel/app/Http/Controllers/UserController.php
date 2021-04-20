@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use App\user;
+use App\image;
 
 class UserController extends Controller
 {
@@ -86,12 +88,12 @@ class UserController extends Controller
             'nick'=>'required', 'string', 'max:255', 'unique:user', 'nick'.$id,
             'email' => 'required', 'string', 'email', 'max:255', 'unique:user'.$id
         ]);
-        //para subir imagen
+
         $image_path = $request->file('avatar');
 
         if ($image_path){
             $image_path_name = time().$image_path->getClientOriginalName();
-            Storage::disk ('users')->put ($image_path_name,File::get($image_path));//guarda en la carpeta users de storage/app
+            Storage::disk ('users')->put ($image_path_name,File::get($image_path));
             $user->image = $image_path_name;
         }
         $user->update();
@@ -111,6 +113,7 @@ class UserController extends Controller
 
     public function getProfile($id){
         $id_user = User::find($id);
+        $image = new Image();
         return view('profile',['user'=>$id_user]);
     }
 

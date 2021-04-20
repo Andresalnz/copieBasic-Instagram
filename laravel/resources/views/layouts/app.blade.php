@@ -66,7 +66,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Mi Perfil</a>
+                                    <a class="dropdown-item" href="{{route('User.profile',['filename'=>Auth::user()->id])}}">Mi Perfil</a>
                                     <a class="dropdown-item" href="{{ route('User.config') }}">Configuración</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
